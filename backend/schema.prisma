@@ -19,9 +19,10 @@ model Note {
   id Int @id @default(autoincrement())
   title String @db.VarChar(50)
   description String @db.VarChar(5000)
-  lock Boolean
-  password String
-  important Boolean
+  lock Boolean @default(false)
+  password String @default("")
+  important Boolean @default(false)
   userId Int 
   user User @relation(fields: [userId], references: [id])
+  createdAt DateTime @default(now())
 }

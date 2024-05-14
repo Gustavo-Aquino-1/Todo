@@ -1,0 +1,2 @@
+-- AlterTable
+ALTER TABLE `Note` MODIFY `password` VARCHAR(191) NOT NULL DEFAULT '';
