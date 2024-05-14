@@ -1,0 +1,27 @@
+datasource db {
+  provider = "mysql"
+  url = "mysql://root:password@localhost:3308/todolist"
+}
+
+generator dbProvider {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id Int @id @default(autoincrement())
+  name String 
+  email String @unique
+  password String
+  posts Note[] 
+}
+
+model Note {
+  id Int @id @default(autoincrement())
+  title String @db.VarChar(50)
+  description String @db.VarChar(5000)
+  lock Boolean
+  password String
+  important Boolean
+  userId Int 
+  user User @relation(fields: [userId], references: [id])
+}
