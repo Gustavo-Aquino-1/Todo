@@ -16,7 +16,7 @@ export default class IsAuthorized implements CanActivate {
     const req = context.switchToHttp().getRequest();
     const token = req.headers.authorization;
     try {
-      const decoded = verify(token, process.env.JWT_SECRET_ACESS_TOKEN) as any;
+      const decoded = verify(token, process.env.JWT_SECRET) as any;
       if (this.role && decoded.role != this.role) throw new Error();
       return true;
     } catch (error) {
